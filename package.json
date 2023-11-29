@@ -1,0 +1,14 @@
+{
+  "name": "taskwaveapp",
+  "version": "1.0.0",
+  "description": "to do list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joseph D Rivera",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^27.1.2"
+  }
+}
