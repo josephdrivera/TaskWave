@@ -2,13 +2,21 @@
   "name": "taskwaveapp",
   "version": "1.0.0",
   "description": "to do list",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start": "nodemon --watch main.js --exec 'electron .'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joseph D Rivera",
   "license": "ISC",
   "dependencies": {
-    "electron": "^27.1.2"
+    "dexie": "^3.2.4",
+    "dotenv": "^16.3.1",
+    "electron": "^27.1.2",
+    "electron-reload": "^2.0.0-alpha.1",
+    "firebase": "^10.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
