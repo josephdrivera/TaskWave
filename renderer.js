@@ -17,23 +17,69 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to add task
     function addTask(taskContent) {
         const tasks = loadTasks();
-        tasks.push({ content: taskContent });
+        const newTask = { 
+            content: taskContent, 
+            id: Date.now(), 
+            completed: false // Track completion status
+        };
+        tasks.push(newTask);
         saveTasks(tasks);
-        displayTask(taskContent); // Update the UI
+        displayTask(newTask); // Update to pass the entire task object
     }
 
     // Function to display a single task on the UI
-    function displayTask(taskContent) {
+    function displayTask(task) {
         const taskItem = document.createElement('li');
-        taskItem.textContent = taskContent;
+
+        // Checkbox for marking task as complete
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = task.completed;
+        checkbox.className = 'task-checkbox'; // Add this line
+        checkbox.addEventListener('click', () => toggleTaskCompletion(task.id));
+        taskItem.appendChild(checkbox);
+
+        const taskText = document.createElement('span');
+        taskText.textContent = task.content;
+        if (task.completed) {
+            taskText.classList.add('completed'); // Add class for completed tasks
+        }
+        taskItem.appendChild(taskText);
+
+        // Create and append the delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'delete-button'; // Add this line
+        deleteButton.addEventListener('click', () => deleteTask(task.id));
+        taskItem.appendChild(deleteButton);
+
         taskList.appendChild(taskItem);
+    }
+
+    // Function to toggle task completion status
+    function toggleTaskCompletion(taskId) {
+        const tasks = loadTasks();
+        const taskIndex = tasks.findIndex(task => task.id === taskId);
+        if (taskIndex !== -1) {
+            tasks[taskIndex].completed = !tasks[taskIndex].completed;
+            saveTasks(tasks);
+            loadAndDisplayTasks(); // Refresh the task list
+        }
+    }
+
+    // Function to delete a task
+    function deleteTask(taskId) {
+        let tasks = loadTasks();
+        tasks = tasks.filter(task => task.id !== taskId);
+        saveTasks(tasks);
+        loadAndDisplayTasks(); // Refresh the task list
     }
 
     // Function to load and display all tasks
     function loadAndDisplayTasks() {
         const tasks = loadTasks();
         taskList.innerHTML = ''; // Clear the task list before loading
-        tasks.forEach(task => displayTask(task.content));
+        tasks.forEach(displayTask);
     }
 
     loadAndDisplayTasks();
