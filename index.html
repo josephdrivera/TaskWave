@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TaskWave - To-Do List</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>TaskWave - To-Do List</title>
+    <link rel="stylesheet" type="text/css" href="compiled.css"> <!-- Tailwind CSS -->
 </head>
-<body>
-  <h1>TaskWave - Your To-Do List</h1>
-  <h2>What do you need to do today?</h2>
-  <div class="task-input">
-    <input type="text" id="new-task" placeholder="Add a new item...">
-    <button id="add-task">Add Task</button>
-  </div>
-  <ul id="task-list">
-    <!-- Task list with checkboxes will be generated here by the renderer.js script -->
-    <!-- Each task will have a checkbox for marking it as complete -->
-  </ul>
-  <script src="renderer.js"></script>
+<body class="font-sans bg-gray-100 text-gray-800 m-0 p-5">
+    <div class="container mx-auto p-5 bg-white rounded-lg shadow-md max-w-lg">
+        <h1 class="text-3xl font-bold mb-2 text-center">TaskWave - Your To-Do List</h1>
+        <h2 class="text-xl mb-4 text-center">What do you need to do today?</h2>
+        <div class="task-input mb-5">
+            <input type="text" id="new-task" placeholder="Add a new item..." class="p-2.5 w-3/4 mr-2.5 border border-gray-300 rounded">
+            <button id="add-task" class="p-2.5 bg-blue-600 text-white rounded cursor-pointer hover:bg-blue-700">Add Task</button>
+        </div>
+        <ul id="task-list" class="list-none p-0">
+            <!-- Task list will be dynamically generated here -->
+        </ul>
+    </div>
+    <script src="renderer.js"></script>
 </body>
 </html>
