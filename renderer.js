@@ -24,13 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         tasks.push(newTask);
         saveTasks(tasks);
-        displayTask(newTask); // Update to pass the entire task object
+        displayTask(newTask, tasks.length - 1); // Update to pass the entire task object and index
     }
 
     // Function to display a single task on the UI
-    function displayTask(task) {
+    function displayTask(task, index) {
         const taskItem = document.createElement('li');
-        taskItem.className = 'flex justify-between items-center p-3 input-primary shadow rounded-lg'; // Tailwind classes for styling
+        taskItem.className = `flex justify-between items-center p-3 ${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-600'} shadow rounded mb-2`; // Alternate row colors with dark background
+    
     
         // Checkbox for marking task as complete
         const checkbox = document.createElement('input');
