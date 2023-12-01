@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles (if any) can go here */
+/* Example custom style */
+.custom-class {
+    /* custom properties */
+}

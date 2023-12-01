@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const addButton = document.getElementById('add-task'); // Get the add task button
+    const taskForm = document.getElementById('task-form'); // Get the task form
     const taskInput = document.getElementById('new-task'); // Get the input field
     const taskList = document.getElementById('task-list'); // Get the task list
 
@@ -30,29 +30,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to display a single task on the UI
     function displayTask(task) {
         const taskItem = document.createElement('li');
-
+        taskItem.className = 'flex justify-between items-center p-3 input-primary shadow rounded-lg'; // Tailwind classes for styling
+    
         // Checkbox for marking task as complete
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = task.completed;
-        checkbox.className = 'task-checkbox'; // Add this line
+        checkbox.className = 'form-checkbox h-5 w-5 text-blue-600 mr-4'; // Tailwind classes
         checkbox.addEventListener('click', () => toggleTaskCompletion(task.id));
         taskItem.appendChild(checkbox);
-
+    
         const taskText = document.createElement('span');
         taskText.textContent = task.content;
-        if (task.completed) {
-            taskText.classList.add('completed'); // Add class for completed tasks
-        }
+        taskText.className = task.completed ? 'line-through' : '';
         taskItem.appendChild(taskText);
-
-        // Create and append the delete button
+    
+        // Create and append the delete button with DaisyUI classes
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
-        deleteButton.className = 'delete-button'; // Add this line
+        deleteButton.className = 'btn btn-error rounded-lg'; // DaisyUI classes for a delete button
         deleteButton.addEventListener('click', () => deleteTask(task.id));
         taskItem.appendChild(deleteButton);
-
+    
         taskList.appendChild(taskItem);
     }
 
@@ -82,12 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
         tasks.forEach(displayTask);
     }
 
-    loadAndDisplayTasks();
-
-    addButton.addEventListener('click', () => {
+    // Handling form submission instead of button click
+    taskForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the default form submission
         if (taskInput.value.trim() !== '') {
             addTask(taskInput.value);
             taskInput.value = ''; // Clear the input field
         }
     });
+
+    loadAndDisplayTasks();
 });

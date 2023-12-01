@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="cyberpunk">
 <head>
-    <title>TaskWave - To-Do List</title>
-    <link rel="stylesheet" type="text/css" href="compiled.css"> <!-- Tailwind CSS -->
+    <title>TaskWave</title>
+    <link rel="stylesheet" type="text/css" href="compiled.css"> <!-- Link to your compiled Tailwind CSS -->
 </head>
-<body class="font-sans bg-gray-100 text-gray-800 m-0 p-5">
-    <div class="container mx-auto p-5 bg-white rounded-lg shadow-md max-w-lg">
-        <h1 class="text-3xl font-bold mb-2 text-center">TaskWave - Your To-Do List</h1>
-        <h2 class="text-xl mb-4 text-center">What do you need to do today?</h2>
-        <div class="task-input mb-5">
-            <input type="text" id="new-task" placeholder="Add a new item..." class="p-2.5 w-3/4 mr-2.5 border border-gray-300 rounded">
-            <button id="add-task" class="p-2.5 bg-blue-600 text-white rounded cursor-pointer hover:bg-blue-700">Add Task</button>
-        </div>
-        <ul id="task-list" class="list-none p-0">
-            <!-- Task list will be dynamically generated here -->
+<body class="font-sans bg-base-200 text-base-content min-h-screen flex justify-center items-center p-5">
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-5 bg-base-100 rounded-2xl shadow-2xl max-w-2xl my-6">
+
+        <!-- Title -->
+        <h1 class="text-4xl font-bold text-center mb-2">TaskWave</h1>
+        <h2 class="text-xl text-center mb-4">What do you need to do today?</h2>
+        
+        <!-- Form to Add Task -->
+        <form id="task-form" class="task-input mb-5 flex justify-center gap-4">
+            <input type="text" id="new-task" placeholder="Add a new item..." class="input input-bordered input-primary flex-grow rounded-lg">
+            <button type="submit" id="add-task" class="btn btn-primary rounded-lg">Add Task</button>
+        </form>
+
+        <!-- Task List -->
+        <ul id="task-list" class="space-y-2">
+            <!-- Task list items will be dynamically generated here -->
         </ul>
     </div>
+
+    <!-- Renderer Script -->
     <script src="renderer.js"></script>
 </body>
 </html>

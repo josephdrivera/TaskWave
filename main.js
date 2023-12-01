@@ -17,7 +17,7 @@ function createWindow() {
     mainWindow.loadFile('index.html');
 
     // Open the DevTools. Remove this line in production
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 
     // Show the window when it is ready
     mainWindow.once('ready-to-show', () => {
