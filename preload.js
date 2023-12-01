@@ -1,30 +1,28 @@
 const { contextBridge } = require('electron');
-const Dexie = require('dexie');
 
-// Initialize Dexie (IndexedDB)
-const db = new Dexie('MyTasksDB');
-db.version(1).stores({
-  tasks: '++id, content'
-});
-
-console.log("Preload script is running"); // Add this line for debugging
+console.log("Preload script is running"); // For debugging
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    addTask: async (taskContent) => {
+    addTask: (taskContent) => {
         try {
-            // Add task to IndexedDB
-            const docRef = await db.tasks.add({ content: taskContent });
-            return docRef;
+            // Retrieve existing tasks from local storage
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            // Create a new task object
+            const newTask = { id: Date.now(), content: taskContent };
+            // Add new task to the array
+            tasks.push(newTask);
+            // Save updated array back to local storage
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            return newTask.id;
         } catch (error) {
             console.error("Error in addTask:", error);
             throw error;
         }
     },
-    getTasks: async () => {
+    getTasks: () => {
         try {
-            // Get tasks from IndexedDB
-            const tasks = await db.tasks.toArray();
-            return tasks;
+            // Get tasks from local storage
+            return JSON.parse(localStorage.getItem('tasks')) || [];
         } catch (error) {
             console.error("Error in getTasks:", error);
             throw error;
