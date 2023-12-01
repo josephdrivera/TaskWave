@@ -1,12 +1,11 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
-
 function createWindow() {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 1920,
-        height: 1080,
+        width: 800,
+        height: 600,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
@@ -18,7 +17,7 @@ function createWindow() {
     mainWindow.loadFile('index.html');
 
     // Open the DevTools. Remove this line in production
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 
     // Show the window when it is ready
     mainWindow.once('ready-to-show', () => {

@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="cyberpunk">
 <head>
-  <title>TaskWave - To-Do List</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>TaskWave</title>
+    <link rel="stylesheet" type="text/css" href="compiled.css"> <!-- Link to your compiled Tailwind CSS -->
 </head>
-<body>
-  <h1>TaskWave - Your To-Do List</h1>
-  <h2>What do you need to do today?</h2>
-  <div class="task-input">
-    <input type="text" id="new-task" placeholder="Add a new item...">
-    <button id="add-task">Add Task</button>
-  </div>
-  <ul id="task-list">
-    <!-- Task list with checkboxes will be generated here by the renderer.js script -->
-    <!-- Each task will have a checkbox for marking it as complete -->
-  </ul>
-  <script src="renderer.js"></script>
+<body class="font-sans bg-base-200 text-base-content min-h-screen flex justify-center items-center p-5">
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-5 bg-base-100 rounded-2xl shadow-2xl max-w-2xl my-6">
+
+        <!-- Title -->
+        <h1 class="text-4xl font-bold text-center mb-2">TaskWave</h1>
+        <h2 class="text-xl text-center mb-4">What do you need to do today?</h2>
+        
+        <!-- Form to Add Task -->
+        <form id="task-form" class="task-input mb-5 flex justify-center gap-4">
+            <input type="text" id="new-task" placeholder="Add a new item..." class="input input-bordered input-primary flex-grow rounded-lg">
+            <button type="submit" id="add-task" class="btn btn-primary rounded-lg">Add Task</button>
+        </form>
+
+        <!-- Task List -->
+        <ul id="task-list" class="space-y-2">
+            <!-- Task list items will be dynamically generated here -->
+        </ul>
+    </div>
+
+    <!-- Renderer Script -->
+    <script src="renderer.js"></script>
 </body>
 </html>

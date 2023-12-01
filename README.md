@@ -22,6 +22,10 @@ After launching TaskWave, you can:
 - Tasks are stored locally using `localStorage`, allowing for quick access and persistence.
 - A clean and minimalistic design, focusing on usability.
 
+## Zebra Striping
+- The task list now features zebra striping, with alternate row colors for improved readability.
+- Alternate rows have a darker background color to match the dark theme.
+
 ## Contributing
 Contributions to TaskWave are welcome! If you have ideas for improvements or have found a bug, please open an issue or submit a pull request. Please read our contributing guidelines for more information.
 
