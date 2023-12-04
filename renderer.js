@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTask = { 
             content: taskContent, 
             id: Date.now(), 
-            completed: false // Track completion status
+            completed: false 
         };
         tasks.push(newTask);
         saveTasks(tasks);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = task.completed;
-        checkbox.className = 'form-checkbox h-5 w-5 text-blue-600 mr-4'; // Tailwind classes
+        checkbox.className = 'form-checkbox h-5 w-5 text-blue-600 mr-4'; 
         checkbox.addEventListener('click', () => toggleTaskCompletion(task.id));
         taskItem.appendChild(checkbox);
     
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Create and append the delete button with DaisyUI classes
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
-        deleteButton.className = 'btn btn-error rounded-lg'; // DaisyUI classes for a delete button
+        deleteButton.className = 'btn btn-error rounded-lg'; 
         deleteButton.addEventListener('click', () => deleteTask(task.id));
         taskItem.appendChild(deleteButton);
     
